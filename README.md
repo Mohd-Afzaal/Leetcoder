@@ -15,9 +15,8 @@ The main purpose of this repo is to **practice coding, improve problem-solving s
 | # | Problem | Difficulty | Language | Status |
 |---|----------|------------|----------|---------|
 | 1 | [Two Sum](https://leetcode.com/problems/two-sum/) | Easy | Py | ✅ |
-| 2 | [Add Two Numbers](https://leetcode.com/problems/add-two-numbers/) | Medium | Py | ✅ |
-| 3 | [Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/) | Medium | Py | ✅ |
-| 4 | [Median of Two Sorted Arrays](https://leetcode.com/problems/median-of-two-sorted-arrays/) | Hard | Py | ✅ |
-| 5 | [Longest Palindromic Substring](https://leetcode.com/problems/longest-palindromic-substring/) | Medium | Py | ✅ |
-| 6 | [Zigzag Conversion](https://leetcode.com/problems/zigzag-conversion/) | Medium | Py | ✅ |
+| 13 | [Roman to Integer](https://leetcode.com/problems/roman-to-integer/) | Easy | Py | ✅ |
+| 20 | [Valid Parentheses](https://leetcode.com/problems/valid-parentheses/) | Easy | Py | ✅ |
+| 26 | [Remove Duplicates from Sorted Array](https://leetcode.com/problems/remove-duplicates-from-sorted-array/) | Easy | Py | ✅ |
+| 27 | [Remove Element](https://leetcode.com/problems/remove-element/) | Easy | Py | ✅ |
 <!-- END_TABLE -->
