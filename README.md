@@ -14,5 +14,5 @@ The main purpose of this repo is to **practice coding, improve problem-solving s
 <!-- START_TABLE -->
 | # | Problem | Difficulty | Language | Status |
 |---|----------|------------|----------|---------|
-| - | - | - | - | - |
+| 1 | [Two Sum](https://leetcode.com/problems/two-sum/) | Easy | Py | ✅ |
 <!-- END_TABLE -->
