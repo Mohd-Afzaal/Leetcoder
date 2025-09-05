@@ -1,18 +1,17 @@
-a = "1326#"
-lst = list(a)
-result = []
-print(result)
-print(lst)
-i = 0
-while i < len(lst):
-    if  i+2< len(lst) and lst[i+2] == "#":
-        num = int(lst[i:i+2])
-        result.append(chr(num+96))
-        i+=3
+class Solution(object):
+    def twoSum(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        lst = []
+        for i in range(0,len(nums)):
+            for j in range(i+1,len(nums)):
+                if(nums[i]+nums[j]==target):
+                    lst.append(i)
+                    lst.append(j)
+                    break
+        return lst
 
-    else:
-        num = int(lst[i])
-        result.append(chr(num+96))
-        i+=1
-
-print(result) 
+        
