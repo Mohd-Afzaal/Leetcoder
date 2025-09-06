@@ -1,7 +1,7 @@
-name: Update README
+name: Update README with Solutions
 
 on:
-  push:
+  push:   # run on any push to main or master
     branches:
       - main
       - master
@@ -9,11 +9,12 @@ on:
 jobs:
   update-readme:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          persist-credentials: false  # required for pushing back changes
+          persist-credentials: false  # so we can push back changes safely
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -23,7 +24,7 @@ jobs:
       - name: Install dependencies
         run: pip install requests
 
-      - name: Run script
+      - name: Run update script
         run: python update_readme.py
 
       - name: Commit changes
