@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - master
+  workflow_dispatch:   # allows manual trigger from Actions tab
 
 jobs:
   update-readme:
@@ -40,10 +41,14 @@ jobs:
           echo "github.ref_name = ${{ github.ref_name }}"
 
       - name: Commit and push changes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          BRANCH: ${{ github.ref_name }}
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add README.md
           git commit -m "chore: update progress tracker" || echo "No changes to commit"
-          git pull --rebase origin ${{ github.ref_name }}
-          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }} HEAD:${{ github.ref_name }}
+          git pull --rebase origin $BRANCH
+          git push https://x-access-token:${GITHUB_TOKEN}@github.com/${REPO}.git HEAD:$BRANCH
