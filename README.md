@@ -15,7 +15,6 @@ The main purpose of this repo is to **practice coding, improve problem-solving s
 | # | Problem | Difficulty | Language | Status |
 |---|----------|------------|----------|---------|
 | 1 | [Two Sum](https://leetcode.com/problems/two-sum/) | Easy | Py | ✅ |
-| 4 | [Median of Two Sorted Arrays](https://leetcode.com/problems/median-of-two-sorted-arrays/) | Hard | Py | ✅ |
 | 13 | [Roman to Integer](https://leetcode.com/problems/roman-to-integer/) | Easy | Py | ✅ |
 | 20 | [Valid Parentheses](https://leetcode.com/problems/valid-parentheses/) | Easy | Py | ✅ |
 | 26 | [Remove Duplicates from Sorted Array](https://leetcode.com/problems/remove-duplicates-from-sorted-array/) | Easy | Py | ✅ |
