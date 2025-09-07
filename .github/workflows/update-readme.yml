@@ -1,7 +1,7 @@
 name: Update README with Solutions
 
 on:
-  push:   # run on any push to main or master
+  push:
     branches:
       - main
       - master
@@ -14,7 +14,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          persist-credentials: false  # so we can push back changes safely
+          persist-credentials: false
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -27,10 +27,11 @@ jobs:
       - name: Run update script
         run: python update_readme.py
 
-      - name: Commit changes
+      - name: Commit and push changes
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add README.md
           git commit -m "chore: update progress tracker" || echo "No changes to commit"
-          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }} HEAD:${{ github.ref }}
+          git pull --rebase origin ${{ github.ref_name }}
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }} HEAD:${{ github.ref_name }}
