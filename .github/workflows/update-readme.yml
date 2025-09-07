@@ -27,6 +27,18 @@ jobs:
       - name: Run update script
         run: python update_readme.py
 
+      - name: Debug repo state
+        run: |
+          echo "📂 Git remotes:"
+          git remote -v
+          echo ""
+          echo "🌿 Git branches:"
+          git branch -a
+          echo ""
+          echo "🔍 Current ref:"
+          echo "github.ref = ${{ github.ref }}"
+          echo "github.ref_name = ${{ github.ref_name }}"
+
       - name: Commit and push changes
         run: |
           git config --global user.name "github-actions[bot]"
