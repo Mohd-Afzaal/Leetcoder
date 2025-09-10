@@ -21,4 +21,5 @@ The main purpose of this repo is to **practice coding, improve problem-solving s
 | 27 | [Remove Element](https://leetcode.com/problems/remove-element/) | Easy | Py | ✅ |
 | 28 | [Find the Index of the First Occurrence in a String](https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/) | Easy | Py | ✅ |
 | 35 | [Search Insert Position](https://leetcode.com/problems/search-insert-position/) | Easy | Py | ✅ |
+| 58 | [Length of Last Word](https://leetcode.com/problems/length-of-last-word/) | Easy | Py | ✅ |
 <!-- END_TABLE -->
