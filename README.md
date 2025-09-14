@@ -23,4 +23,5 @@ The main purpose of this repo is to **practice coding, improve problem-solving s
 | 35 | [Search Insert Position](https://leetcode.com/problems/search-insert-position/) | Easy | Py | ✅ |
 | 58 | [Length of Last Word](https://leetcode.com/problems/length-of-last-word/) | Easy | Py | ✅ |
 | 66 | [Plus One](https://leetcode.com/problems/plus-one/) | Easy | Py | ✅ |
+| 67 | [Add Binary](https://leetcode.com/problems/add-binary/) | Easy | Py | ✅ |
 <!-- END_TABLE -->
