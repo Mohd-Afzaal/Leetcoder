@@ -1,0 +1,1 @@
+index_to_delete = nums.index(i)
