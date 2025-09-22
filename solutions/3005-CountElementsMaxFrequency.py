@@ -7,7 +7,7 @@ def max_count(num, lst):
     return count
     
 
-nums = [1,2,2,3,1,4]
+nums = [2,4,4,5,3,2,9,2,2,4,4,3,3]
 temp = list(set(nums))
 max_freq_count = 0
 freq = []
