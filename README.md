@@ -25,4 +25,5 @@ The main purpose of this repo is to **practice coding, improve problem-solving s
 | 66 | [Plus One](https://leetcode.com/problems/plus-one/) | Easy | Py | ✅ |
 | 67 | [Add Binary](https://leetcode.com/problems/add-binary/) | Easy | Py | ✅ |
 | 2197 | [Replace Non-Coprime Numbers in Array](https://leetcode.com/problems/replace-non-coprime-numbers-in-array/) | Hard | Py | ✅ |
+| 3005 | [Count Elements With Maximum Frequency](https://leetcode.com/problems/count-elements-with-maximum-frequency/) | Easy | Py | ✅ |
 <!-- END_TABLE -->
