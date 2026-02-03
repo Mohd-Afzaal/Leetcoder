@@ -1,106 +1,152 @@
 import os
 import re
-import requests
+from typing import Dict, List, Tuple
+
+try:
+    import requests
+except ImportError:
+    requests = None
+
 
 README_PATH = "README.md"
-SOLUTIONS_DIR = "solutions"  # change if needed
+SOLUTIONS_DIR = "solutions"
 LEETCODE_API = "https://leetcode.com/api/problems/all/"
 
-def fetch_problem_map():
-    """Fetch problem metadata from LeetCode (id -> difficulty + slug)."""
-    print("🔄 Fetching problem metadata from LeetCode API...")
-    resp = requests.get(LEETCODE_API, timeout=10)
-    data = resp.json()["stat_status_pairs"]
+LANG_MAP = {
+    "py": "Python",
+    "cpp": "C++",
+    "c": "C",
+    "java": "Java",
+    "js": "JavaScript",
+}
+
+FILE_PATTERN = re.compile(r"^(\d+)[-_ ].+\.(\w+)$")
+
+
+def fetch_problem_map() -> Dict[int, Dict[str, str]]:
+    """Fetch problem metadata from LeetCode. Fails gracefully."""
+    if not requests:
+        print("⚠️ requests not available, skipping LeetCode metadata")
+        return {}
+
+    print("🔄 Fetching problem metadata from LeetCode...")
+    try:
+        resp = requests.get(LEETCODE_API, timeout=10)
+        resp.raise_for_status()
+        data = resp.json().get("stat_status_pairs", [])
+    except Exception as e:
+        print(f"❌ Failed to fetch LeetCode metadata: {e}")
+        return {}
 
     difficulties = {1: "Easy", 2: "Medium", 3: "Hard"}
     problem_map = {}
+
     for entry in data:
-        stat = entry["stat"]
-        prob_id = stat["frontend_question_id"]
-        slug = stat["question__title_slug"]
-        difficulty = difficulties[entry["difficulty"]["level"]]
-        title = stat["question__title"]
-        url = f"https://leetcode.com/problems/{slug}/"
+        stat = entry.get("stat", {})
+        diff = entry.get("difficulty", {})
+        prob_id = stat.get("frontend_question_id")
+
+        if not prob_id:
+            continue
+
         problem_map[prob_id] = {
-            "title": title,
-            "difficulty": difficulty,
-            "url": url,
+            "title": stat.get("question__title", f"Problem {prob_id}"),
+            "difficulty": difficulties.get(diff.get("level"), "?"),
+            "url": f"https://leetcode.com/problems/{stat.get('question__title_slug', '')}/",
         }
 
-    print(f"✅ Loaded metadata for {len(problem_map)} problems.")
+    print(f"✅ Loaded metadata for {len(problem_map)} problems")
     return problem_map
 
-def get_solutions(problem_map):
-    """Scan solution files and extract problem info from filenames."""
+
+def scan_solutions(problem_map: Dict[int, Dict[str, str]]) -> List[Tuple]:
+    """Scan solutions directory and build solution rows."""
+    if not os.path.isdir(SOLUTIONS_DIR):
+        print(f"⚠️ '{SOLUTIONS_DIR}' directory not found")
+        return []
+
     solutions = []
-    pattern = re.compile(r"(\d+)[-_ ](.+)\.(\w+)$")
 
-    if not os.path.exists(SOLUTIONS_DIR):
-        print(f"⚠️  Solutions folder '{SOLUTIONS_DIR}' not found.")
-        return []
+    for root, _, files in os.walk(SOLUTIONS_DIR):
+        for file in files:
+            match = FILE_PATTERN.match(file)
+            if not match:
+                continue
 
-    files = os.listdir(SOLUTIONS_DIR)
-    if not files:
-        print(f"⚠️  No files found in '{SOLUTIONS_DIR}'.")
-        return []
-
-    print(f"📂 Found {len(files)} file(s) in '{SOLUTIONS_DIR}': {files}")
-
-    for file in files:
-        match = pattern.match(file)
-        if match:
-            number, _, lang = match.groups()
+            number, ext = match.groups()
             number = int(number)
+
             meta = problem_map.get(number, {})
             title = meta.get("title", f"Problem {number}")
             difficulty = meta.get("difficulty", "?")
             url = meta.get("url", "#")
-            lang = lang.capitalize()
-            solutions.append((number, title, difficulty, lang, "✅", url))
-            print(f"✅ Matched: {file} → {title} ({difficulty}, {lang})")
-        else:
-            print(f"⏭️ Skipping file (invalid name): {file}")
 
-    return sorted(solutions, key=lambda x: x[0])
+            lang = LANG_MAP.get(ext.lower(), ext.upper())
 
-def update_readme(solutions):
-    """Update README.md with a fresh progress table."""
+            solutions.append(
+                (number, title, difficulty, lang, "✅", url)
+            )
+
+    solutions.sort(key=lambda x: x[0])
+    print(f"📂 Found {len(solutions)} solution(s)")
+    return solutions
+
+
+def build_table(solutions: List[Tuple]) -> str:
+    header = (
+        "| # | Problem | Difficulty | Language | Status |\n"
+        "|---|----------|------------|----------|--------|\n"
+    )
+
+    if not solutions:
+        return header + "| - | No solutions yet | - | - | - |\n"
+
+    rows = [
+        f"| {num} | [{title}]({url}) | {diff} | {lang} | {status} |"
+        for num, title, diff, lang, status, url in solutions
+    ]
+
+    return header + "\n".join(rows)
+
+
+def update_readme(table: str) -> None:
+    if not os.path.exists(README_PATH):
+        print("❌ README.md not found, skipping update")
+        return
+
     with open(README_PATH, "r", encoding="utf-8") as f:
-        readme = f.read()
+        content = f.read()
 
-    # Build new table
-    table_header = "| # | Problem | Difficulty | Language | Status |\n|---|----------|------------|----------|---------|\n"
-    
-    if solutions:
-        table_rows = "\n".join(
-            f"| {num} | [{title}]({url}) | {difficulty} | {lang} | {status} |"
-            for num, title, difficulty, lang, status, url in solutions
-        )
-    else:
-        table_rows = "| - | No solutions yet | - | - | - |"
-        print("⚠️  No valid solutions found. Inserting placeholder row.")
+    start = "<!-- START_TABLE -->"
+    end = "<!-- END_TABLE -->"
 
-    new_table = table_header + table_rows
-
-    # Replace old table (between markers) or append if missing
-    if "<!-- START_TABLE -->" in readme and "<!-- END_TABLE -->" in readme:
-        import re
-        readme = re.sub(
-            r"<!-- START_TABLE -->(.*?)<!-- END_TABLE -->",
-            f"<!-- START_TABLE -->\n{new_table}\n<!-- END_TABLE -->",
-            readme,
+    if start in content and end in content:
+        new_content = re.sub(
+            rf"{start}.*?{end}",
+            f"{start}\n{table}\n{end}",
+            content,
             flags=re.S,
         )
-        print("📝 Updated existing progress tracker in README.md")
+        print("📝 Updated existing table")
     else:
-        readme += f"\n\n## 📊 Progress Tracker\n<!-- START_TABLE -->\n{new_table}\n<!-- END_TABLE -->\n"
-        print("📝 Added new progress tracker section to README.md")
+        new_content = (
+            content
+            + "\n\n## 📊 Progress Tracker\n"
+            + f"{start}\n{table}\n{end}\n"
+        )
+        print("📝 Added new progress tracker section")
 
     with open(README_PATH, "w", encoding="utf-8") as f:
-        f.write(readme)
+        f.write(new_content)
+
+
+def main():
+    problem_map = fetch_problem_map()
+    solutions = scan_solutions(problem_map)
+    table = build_table(solutions)
+    update_readme(table)
+    print("🎉 README update complete")
+
 
 if __name__ == "__main__":
-    problem_map = fetch_problem_map()
-    sols = get_solutions(problem_map)
-    update_readme(sols)
-    print("🎉 Done! README.md updated.")
+    main()
