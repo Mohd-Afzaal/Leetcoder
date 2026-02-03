@@ -59,13 +59,14 @@ def fetch_problem_map() -> Dict[int, Dict[str, str]]:
     return problem_map
 
 
-def scan_solutions(problem_map: Dict[int, Dict[str, str]]) -> List[Tuple]:
-    """Scan solutions directory and build solution rows."""
+from collections import defaultdict
+
+def scan_solutions(problem_map):
     if not os.path.isdir(SOLUTIONS_DIR):
         print(f"⚠️ '{SOLUTIONS_DIR}' directory not found")
         return []
 
-    solutions = []
+    grouped = defaultdict(set)
 
     for root, _, files in os.walk(SOLUTIONS_DIR):
         for file in files:
@@ -75,27 +76,30 @@ def scan_solutions(problem_map: Dict[int, Dict[str, str]]) -> List[Tuple]:
 
             number, ext = match.groups()
             number = int(number)
-
-            meta = problem_map.get(number, {})
-            title = meta.get("title", f"Problem {number}")
-            difficulty = meta.get("difficulty", "?")
-            url = meta.get("url", "#")
-
             lang = LANG_MAP.get(ext.lower(), ext.upper())
+            grouped[number].add(lang)
 
-            solutions.append(
-                (number, title, difficulty, lang, "✅", url)
-            )
+    solutions = []
+    for number in sorted(grouped):
+        meta = problem_map.get(number, {})
+        solutions.append((
+            number,
+            meta.get("title", f"Problem {number}"),
+            meta.get("difficulty", "?"),
+            ", ".join(sorted(grouped[number])),
+            "✅",
+            meta.get("url", "#")
+        ))
 
-    solutions.sort(key=lambda x: x[0])
-    print(f"📂 Found {len(solutions)} solution(s)")
+    print(f"📂 Found {len(solutions)} problem(s)")
     return solutions
 
 
 def build_table(solutions: List[Tuple]) -> str:
     header = (
-        "| # | Problem | Difficulty | Language | Status |\n"
-        "|---|----------|------------|----------|--------|\n"
+        "| # | Problem | Difficulty | Languages | Status |\n"
+"|---|----------|------------|-----------|--------|\n"
+
     )
 
     if not solutions:
