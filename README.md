@@ -19,6 +19,7 @@ The main purpose of this repo is to **practice coding, improve problem-solving s
 | 7 | [Reverse Integer](https://leetcode.com/problems/reverse-integer/) | Medium | Python | ✅ |
 | 13 | [Roman to Integer](https://leetcode.com/problems/roman-to-integer/) | Easy | Python | ✅ |
 | 20 | [Valid Parentheses](https://leetcode.com/problems/valid-parentheses/) | Easy | Python | ✅ |
+| 21 | [Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/) | Easy | C | ✅ |
 | 21 | [Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/) | Easy | Python | ✅ |
 | 26 | [Remove Duplicates from Sorted Array](https://leetcode.com/problems/remove-duplicates-from-sorted-array/) | Easy | Python | ✅ |
 | 27 | [Remove Element](https://leetcode.com/problems/remove-element/) | Easy | Python | ✅ |
