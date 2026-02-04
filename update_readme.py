@@ -1,6 +1,7 @@
 import os
 import re
 from typing import Dict, List, Tuple
+from collections import defaultdict
 
 try:
     import requests
@@ -61,7 +62,8 @@ def fetch_problem_map() -> Dict[int, Dict[str, str]]:
 
 from collections import defaultdict
 
-def scan_solutions(problem_map):
+def scan_solutions(problem_map: Dict[int, Dict[str, str]]) -> List[Tuple]:
+    """Scan solutions directory and build solution rows."""
     if not os.path.isdir(SOLUTIONS_DIR):
         print(f"⚠️ '{SOLUTIONS_DIR}' directory not found")
         return []
@@ -93,7 +95,6 @@ def scan_solutions(problem_map):
 
     print(f"📂 Found {len(solutions)} problem(s)")
     return solutions
-
 
 def build_table(solutions: List[Tuple]) -> str:
     header = (
