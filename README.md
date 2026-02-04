@@ -14,7 +14,6 @@ The main purpose of this repo is to **practice coding, improve problem-solving s
 <!-- START_TABLE -->
 | # | Problem | Difficulty | Languages | Status |
 |---|----------|------------|-----------|--------|
-<<<<<<< HEAD
 | 1 | [Two Sum](https://leetcode.com/problems/two-sum/) | Easy | Python | ✅ |
 | 4 | [Median of Two Sorted Arrays](https://leetcode.com/problems/median-of-two-sorted-arrays/) | Hard | Python | ✅ |
 | 7 | [Reverse Integer](https://leetcode.com/problems/reverse-integer/) | Medium | Python | ✅ |
@@ -34,25 +33,4 @@ The main purpose of this repo is to **practice coding, improve problem-solving s
 | 1480 | [Running Sum of 1d Array](https://leetcode.com/problems/running-sum-of-1d-array/) | Easy | Python | ✅ |
 | 2197 | [Replace Non-Coprime Numbers in Array](https://leetcode.com/problems/replace-non-coprime-numbers-in-array/) | Hard | Python | ✅ |
 | 3005 | [Count Elements With Maximum Frequency](https://leetcode.com/problems/count-elements-with-maximum-frequency/) | Easy | Python | ✅ |
-=======
-| 1 | [Problem 1](#) | ? | Python | ✅ |
-| 4 | [Problem 4](#) | ? | Python | ✅ |
-| 7 | [Problem 7](#) | ? | Python | ✅ |
-| 13 | [Problem 13](#) | ? | Python | ✅ |
-| 20 | [Problem 20](#) | ? | Python | ✅ |
-| 21 | [Problem 21](#) | ? | C, Python | ✅ |
-| 26 | [Problem 26](#) | ? | Python | ✅ |
-| 27 | [Problem 27](#) | ? | Python | ✅ |
-| 28 | [Problem 28](#) | ? | Python | ✅ |
-| 35 | [Problem 35](#) | ? | Python | ✅ |
-| 58 | [Problem 58](#) | ? | Python | ✅ |
-| 66 | [Problem 66](#) | ? | Python | ✅ |
-| 67 | [Problem 67](#) | ? | Python | ✅ |
-| 70 | [Problem 70](#) | ? | Python | ✅ |
-| 83 | [Problem 83](#) | ? | C, Python | ✅ |
-| 88 | [Problem 88](#) | ? | Python | ✅ |
-| 1480 | [Problem 1480](#) | ? | Python | ✅ |
-| 2197 | [Problem 2197](#) | ? | Python | ✅ |
-| 3005 | [Problem 3005](#) | ? | Python | ✅ |
->>>>>>> 0125177de8394535dc91df62bb1099c2a012a5a3
 <!-- END_TABLE -->
