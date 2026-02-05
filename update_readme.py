@@ -1,5 +1,6 @@
 import os
 import re
+import json
 from typing import Dict, List, Tuple
 from collections import defaultdict
 
@@ -12,6 +13,7 @@ except ImportError:
 README_PATH = "README.md"
 SOLUTIONS_DIR = "solutions"
 LEETCODE_API = "https://leetcode.com/api/problems/all/"
+CACHE_FILE = "leetcode_cache.json"
 
 LANG_MAP = {
     "py": "Python",
@@ -24,43 +26,81 @@ LANG_MAP = {
 FILE_PATTERN = re.compile(r"^(\d+)[-_ ].+\.(\w+)$")
 
 
-def fetch_problem_map() -> Dict[int, Dict[str, str]]:
-    """Fetch problem metadata from LeetCode. Fails gracefully."""
-    if not requests:
-        print("⚠️ requests not available, skipping LeetCode metadata")
+def load_cache() -> Dict[int, Dict[str, str]]:
+    """Load cached LeetCode data from file."""
+    if not os.path.exists(CACHE_FILE):
+        print("📂 No cache file found")
         return {}
-
-    print("🔄 Fetching problem metadata from LeetCode...")
+    
     try:
-        resp = requests.get(LEETCODE_API, timeout=10)
-        resp.raise_for_status()
-        data = resp.json().get("stat_status_pairs", [])
+        with open(CACHE_FILE, "r", encoding="utf-8") as f:
+            data = json.load(f)
+            print(f"✅ Loaded {len(data)} problems from cache")
+            return {int(k): v for k, v in data.items()}
     except Exception as e:
-        print(f"❌ Failed to fetch LeetCode metadata: {e}")
+        print(f"⚠️ Failed to load cache: {e}")
         return {}
 
-    difficulties = {1: "Easy", 2: "Medium", 3: "Hard"}
-    problem_map = {}
 
-    for entry in data:
-        stat = entry.get("stat", {})
-        diff = entry.get("difficulty", {})
-        prob_id = stat.get("frontend_question_id")
-
-        if not prob_id:
-            continue
-
-        problem_map[prob_id] = {
-            "title": stat.get("question__title", f"Problem {prob_id}"),
-            "difficulty": difficulties.get(diff.get("level"), "?"),
-            "url": f"https://leetcode.com/problems/{stat.get('question__title_slug', '')}/",
-        }
-
-    print(f"✅ Loaded metadata for {len(problem_map)} problems")
-    return problem_map
+def save_cache(problem_map: Dict[int, Dict[str, str]]) -> None:
+    """Save LeetCode data to cache file."""
+    try:
+        with open(CACHE_FILE, "w", encoding="utf-8") as f:
+            json.dump(problem_map, f, indent=2)
+            print(f"💾 Cached {len(problem_map)} problems to {CACHE_FILE}")
+    except Exception as e:
+        print(f"⚠️ Failed to save cache: {e}")
 
 
-from collections import defaultdict
+def fetch_problem_map() -> Dict[int, Dict[str, str]]:
+    """Fetch problem metadata from LeetCode. Falls back to cache on failure."""
+    
+    # Try to fetch from API
+    if requests:
+        print("🔄 Fetching problem metadata from LeetCode API...")
+        try:
+            resp = requests.get(LEETCODE_API, timeout=10)
+            resp.raise_for_status()
+            data = resp.json().get("stat_status_pairs", [])
+            
+            difficulties = {1: "Easy", 2: "Medium", 3: "Hard"}
+            problem_map = {}
+
+            for entry in data:
+                stat = entry.get("stat", {})
+                diff = entry.get("difficulty", {})
+                prob_id = stat.get("frontend_question_id")
+
+                if not prob_id:
+                    continue
+
+                problem_map[prob_id] = {
+                    "title": stat.get("question__title", f"Problem {prob_id}"),
+                    "difficulty": difficulties.get(diff.get("level"), "?"),
+                    "url": f"https://leetcode.com/problems/{stat.get('question__title_slug', '')}/",
+                }
+
+            print(f"✅ Loaded metadata for {len(problem_map)} problems from API")
+            
+            # Save to cache for future use
+            save_cache(problem_map)
+            return problem_map
+            
+        except Exception as e:
+            print(f"❌ Failed to fetch from API: {e}")
+            print("📂 Falling back to cache...")
+    else:
+        print("⚠️ requests not available")
+        print("📂 Using cache...")
+    
+    # Fallback to cache
+    cached_data = load_cache()
+    if cached_data:
+        return cached_data
+    
+    print("❌ No cache available, continuing with empty metadata")
+    return {}
+
 
 def scan_solutions(problem_map: Dict[int, Dict[str, str]]) -> List[Tuple]:
     """Scan solutions directory and build solution rows."""
@@ -96,11 +136,11 @@ def scan_solutions(problem_map: Dict[int, Dict[str, str]]) -> List[Tuple]:
     print(f"📂 Found {len(solutions)} problem(s)")
     return solutions
 
+
 def build_table(solutions: List[Tuple]) -> str:
     header = (
         "| # | Problem | Difficulty | Languages | Status |\n"
-"|---|----------|------------|-----------|--------|\n"
-
+        "|---|----------|------------|-----------|--------|\n"
     )
 
     if not solutions:
