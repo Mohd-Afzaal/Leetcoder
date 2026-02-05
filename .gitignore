@@ -1,0 +1,16 @@
+# IMPORTANT: Add this to your .gitignore
+
+# If you DON'T have a .gitignore yet, create one with this content:
+# DO NOT ignore the cache file - it needs to be committed
+# So make sure leetcode_cache.json is NOT in .gitignore
+
+# Example .gitignore for your repo:
+__pycache__/
+*.pyc
+*.pyo
+.DS_Store
+.vscode/
+.idea/
+
+# DO NOT ADD: leetcode_cache.json
+# The cache MUST be committed so GitHub Actions can use it
