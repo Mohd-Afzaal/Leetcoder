@@ -36,6 +36,7 @@ The main purpose of this repo is to **practice coding, improve problem-solving s
 | 136 | [Single Number](https://leetcode.com/problems/single-number/) | Easy | C, Python | ✅ |
 | 203 | [Remove Linked List Elements](https://leetcode.com/problems/remove-linked-list-elements/) | Easy | C, Python | ✅ |
 | 217 | [Contains Duplicate](https://leetcode.com/problems/contains-duplicate/) | Easy | Python | ✅ |
+| 242 | [Valid Anagram](https://leetcode.com/problems/valid-anagram/) | Easy | Python | ✅ |
 | 1480 | [Running Sum of 1d Array](https://leetcode.com/problems/running-sum-of-1d-array/) | Easy | Python | ✅ |
 | 2197 | [Replace Non-Coprime Numbers in Array](https://leetcode.com/problems/replace-non-coprime-numbers-in-array/) | Hard | Python | ✅ |
 | 3005 | [Count Elements With Maximum Frequency](https://leetcode.com/problems/count-elements-with-maximum-frequency/) | Easy | Python | ✅ |

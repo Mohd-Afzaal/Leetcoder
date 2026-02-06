@@ -1,15 +1,10 @@
-nums = [1,2,2,3,1,4]
-temp = list(set(nums))
+s = "car"
+t = "rat"
 
-freq = {} 
+for i in t:
+    temp = i
+    if s.find(temp) == -1:
+        print("false")
 
 
-count = 0
-for i in range(len(temp)+1):
-    freq.update({nums[i]:0})
 
-for i in range(3):
-    freq[i] = count + 1
-    count+=1
-
-print(freq)
