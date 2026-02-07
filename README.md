@@ -34,6 +34,7 @@ The main purpose of this repo is to **practice coding, improve problem-solving s
 | 121 | [Best Time to Buy and Sell Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/) | Easy | C, Python | ✅ |
 | 125 | [Valid Palindrome](https://leetcode.com/problems/valid-palindrome/) | Easy | Python | ✅ |
 | 136 | [Single Number](https://leetcode.com/problems/single-number/) | Easy | C, Python | ✅ |
+| 169 | [Majority Element](https://leetcode.com/problems/majority-element/) | Easy | C, Python | ✅ |
 | 203 | [Remove Linked List Elements](https://leetcode.com/problems/remove-linked-list-elements/) | Easy | C, Python | ✅ |
 | 217 | [Contains Duplicate](https://leetcode.com/problems/contains-duplicate/) | Easy | Python | ✅ |
 | 242 | [Valid Anagram](https://leetcode.com/problems/valid-anagram/) | Easy | Python | ✅ |
