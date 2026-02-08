@@ -4,6 +4,21 @@
     "difficulty": "Hard",
     "url": "https://leetcode.com/problems/find-users-with-persistent-behavior-patterns/"
   },
+  "3833": {
+    "title": "Count Dominant Indices",
+    "difficulty": "Easy",
+    "url": "https://leetcode.com/problems/count-dominant-indices/"
+  },
+  "3834": {
+    "title": "Merge Adjacent Equal Elements",
+    "difficulty": "Medium",
+    "url": "https://leetcode.com/problems/merge-adjacent-equal-elements/"
+  },
+  "3835": {
+    "title": "Count Subarrays With Cost Less Than or Equal to K",
+    "difficulty": "Medium",
+    "url": "https://leetcode.com/problems/count-subarrays-with-cost-less-than-or-equal-to-k/"
+  },
   "3831": {
     "title": "Median of a Binary Search Tree Level",
     "difficulty": "Medium",
@@ -18,6 +33,11 @@
     "title": "Good Indices in a Digit String",
     "difficulty": "Medium",
     "url": "https://leetcode.com/problems/good-indices-in-a-digit-string/"
+  },
+  "3836": {
+    "title": "Maximum Score Using Exactly K Pairs",
+    "difficulty": "Hard",
+    "url": "https://leetcode.com/problems/maximum-score-using-exactly-k-pairs/"
   },
   "3822": {
     "title": "Design Order Management System",
