@@ -37,6 +37,7 @@ The main purpose of this repo is to **practice coding, improve problem-solving s
 | 169 | [Majority Element](https://leetcode.com/problems/majority-element/) | Easy | C, Python | ✅ |
 | 191 | [Number of 1 Bits](https://leetcode.com/problems/number-of-1-bits/) | Easy | C, Python | ✅ |
 | 203 | [Remove Linked List Elements](https://leetcode.com/problems/remove-linked-list-elements/) | Easy | C, Python | ✅ |
+| 205 | [Isomorphic Strings](https://leetcode.com/problems/isomorphic-strings/) | Easy | Python | ✅ |
 | 217 | [Contains Duplicate](https://leetcode.com/problems/contains-duplicate/) | Easy | Python | ✅ |
 | 231 | [Power of Two](https://leetcode.com/problems/power-of-two/) | Easy | C, Python | ✅ |
 | 242 | [Valid Anagram](https://leetcode.com/problems/valid-anagram/) | Easy | Python | ✅ |
