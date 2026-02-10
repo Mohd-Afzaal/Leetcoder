@@ -1,4 +1,9 @@
 {
+  "3837": {
+    "title": "Delayed Count of Equal Elements",
+    "difficulty": "Medium",
+    "url": "https://leetcode.com/problems/delayed-count-of-equal-elements/"
+  },
   "3832": {
     "title": "Find Users with Persistent Behavior Patterns",
     "difficulty": "Hard",
