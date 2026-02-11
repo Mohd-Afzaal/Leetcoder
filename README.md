@@ -42,6 +42,7 @@ The main purpose of this repo is to **practice coding, improve problem-solving s
 | 231 | [Power of Two](https://leetcode.com/problems/power-of-two/) | Easy | C, Python | ✅ |
 | 242 | [Valid Anagram](https://leetcode.com/problems/valid-anagram/) | Easy | Python | ✅ |
 | 258 | [Add Digits](https://leetcode.com/problems/add-digits/) | Easy | C, Python | ✅ |
+| 268 | [Missing Number](https://leetcode.com/problems/missing-number/) | Easy | C, Python | ✅ |
 | 1480 | [Running Sum of 1d Array](https://leetcode.com/problems/running-sum-of-1d-array/) | Easy | Python | ✅ |
 | 2197 | [Replace Non-Coprime Numbers in Array](https://leetcode.com/problems/replace-non-coprime-numbers-in-array/) | Hard | Python | ✅ |
 | 3005 | [Count Elements With Maximum Frequency](https://leetcode.com/problems/count-elements-with-maximum-frequency/) | Easy | Python | ✅ |
