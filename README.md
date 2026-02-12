@@ -26,6 +26,7 @@ The main purpose of this repo is to **practice coding, improve problem-solving s
 | 28 | [Find the Index of the First Occurrence in a String](https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/) | Easy | Python | ✅ |
 | 35 | [Search Insert Position](https://leetcode.com/problems/search-insert-position/) | Easy | Python | ✅ |
 | 58 | [Length of Last Word](https://leetcode.com/problems/length-of-last-word/) | Easy | Python | ✅ |
+| 60 | [Permutation Sequence](https://leetcode.com/problems/permutation-sequence/) | Hard | C, Python | ✅ |
 | 66 | [Plus One](https://leetcode.com/problems/plus-one/) | Easy | Python | ✅ |
 | 67 | [Add Binary](https://leetcode.com/problems/add-binary/) | Easy | Python | ✅ |
 | 70 | [Climbing Stairs](https://leetcode.com/problems/climbing-stairs/) | Easy | Python | ✅ |
