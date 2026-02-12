@@ -26,7 +26,6 @@ The main purpose of this repo is to **practice coding, improve problem-solving s
 | 28 | [Find the Index of the First Occurrence in a String](https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/) | Easy | Python | ✅ |
 | 35 | [Search Insert Position](https://leetcode.com/problems/search-insert-position/) | Easy | Python | ✅ |
 | 58 | [Length of Last Word](https://leetcode.com/problems/length-of-last-word/) | Easy | Python | ✅ |
-| 60 | [Permutation Sequence](https://leetcode.com/problems/permutation-sequence/) | Hard | C, Python | ✅ |
 | 66 | [Plus One](https://leetcode.com/problems/plus-one/) | Easy | Python | ✅ |
 | 67 | [Add Binary](https://leetcode.com/problems/add-binary/) | Easy | Python | ✅ |
 | 70 | [Climbing Stairs](https://leetcode.com/problems/climbing-stairs/) | Easy | Python | ✅ |
@@ -43,6 +42,7 @@ The main purpose of this repo is to **practice coding, improve problem-solving s
 | 231 | [Power of Two](https://leetcode.com/problems/power-of-two/) | Easy | C, Python | ✅ |
 | 242 | [Valid Anagram](https://leetcode.com/problems/valid-anagram/) | Easy | Python | ✅ |
 | 258 | [Add Digits](https://leetcode.com/problems/add-digits/) | Easy | C, Python | ✅ |
+| 260 | [Single Number III](https://leetcode.com/problems/single-number-iii/) | Medium | C, Python | ✅ |
 | 263 | [Ugly Number](https://leetcode.com/problems/ugly-number/) | Easy | C, Python | ✅ |
 | 268 | [Missing Number](https://leetcode.com/problems/missing-number/) | Easy | C, Python | ✅ |
 | 367 | [Valid Perfect Square](https://leetcode.com/problems/valid-perfect-square/) | Easy | C, Python | ✅ |
