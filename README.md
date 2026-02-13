@@ -45,6 +45,7 @@ The main purpose of this repo is to **practice coding, improve problem-solving s
 | 260 | [Single Number III](https://leetcode.com/problems/single-number-iii/) | Medium | C, Python | ✅ |
 | 263 | [Ugly Number](https://leetcode.com/problems/ugly-number/) | Easy | C, Python | ✅ |
 | 268 | [Missing Number](https://leetcode.com/problems/missing-number/) | Easy | C, Python | ✅ |
+| 326 | [Power of Three](https://leetcode.com/problems/power-of-three/) | Easy | C, Python | ✅ |
 | 367 | [Valid Perfect Square](https://leetcode.com/problems/valid-perfect-square/) | Easy | C, Python | ✅ |
 | 374 | [Guess Number Higher or Lower](https://leetcode.com/problems/guess-number-higher-or-lower/) | Easy | C, Python | ✅ |
 | 1480 | [Running Sum of 1d Array](https://leetcode.com/problems/running-sum-of-1d-array/) | Easy | Python | ✅ |
