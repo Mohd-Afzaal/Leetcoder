@@ -1,10 +1,4 @@
-s = "car"
-t = "rat"
+s = "00:00"
 
-for i in t:
-    temp = i
-    if s.find(temp) == -1:
-        print("false")
-
-
-
+t =int("".join(s.split(":")))
+print(t)
