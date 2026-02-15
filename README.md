@@ -56,4 +56,5 @@ The main purpose of this repo is to **practice coding, improve problem-solving s
 | 2864 | [Maximum Odd Binary Number](https://leetcode.com/problems/maximum-odd-binary-number/) | Easy | Python | ✅ |
 | 3005 | [Count Elements With Maximum Frequency](https://leetcode.com/problems/count-elements-with-maximum-frequency/) | Easy | Python | ✅ |
 | 3697 | [Compute Decimal Representation](https://leetcode.com/problems/compute-decimal-representation/) | Easy | C, Python | ✅ |
+| 3788 | [Maximum Score of a Split](https://leetcode.com/problems/maximum-score-of-a-split/) | Medium | Python | ✅ |
 <!-- END_TABLE -->
